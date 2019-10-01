@@ -3,6 +3,8 @@ from functools import wraps
 
 
 def print_through_functools(f):
+    """Creates function wrapper that will return itself of implement 
+    another function if exclude is None."""
     @wraps(f)
     def function_wrapper(*args, **kwargs):
         if kwargs.get('exclude'):
@@ -15,6 +17,7 @@ def print_through_functools(f):
 
 @print_through_functools
 def sum_(*args,**kwargs):
+    """Will be implemented if exclude kwarg is missing."""
     print('excuting sum_ function since kwargs is included')
     total = 0
     for number in args:
